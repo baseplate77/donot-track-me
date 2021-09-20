@@ -18,7 +18,7 @@ app.post("/", async (req, res) => {
     const hostname = getHostName(redirectUrl);
     const finialUrl = removeTracker(hostname, redirectUrl);
 
-    res.send(JSON.stringify({ initialUrl, finialUrl }));
+    res.send(JSON.stringify({ initialUrl, finialUrl, hostname }));
   } catch (e) {
     console.log("error", e);
     res.send({ error: true, msg: "Some Thing went worng" });
