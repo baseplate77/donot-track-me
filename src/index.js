@@ -11,18 +11,17 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   const initialUrl = req.query.url;
-  // try {
-  //   const redirectUrl = await getLastRedirectUrl(
-  //     "https://youtu.be/M3mJkSqZbX4"
-  //   );
-  //   const hostname = getHostName(redirectUrl);
-  //   const finialUrl = removeTracker(hostname, redirectUrl);
+  try {
+    const redirectUrl = await getLastRedirectUrl(
+      "https://youtu.be/M3mJkSqZbX4"
+    );
+    const hostname = getHostName(redirectUrl);
+    const finialUrl = removeTracker(hostname, redirectUrl);
 
-  //   res.send(JSON.stringify({ initialUrl, finialUrl, hostname }));
-  // } catch (e) {
-  //   res.send({ error: e });
-  // }
-  res.send("hello world");
+    res.send(JSON.stringify({ initialUrl, finialUrl, hostname }));
+  } catch (e) {
+    res.send({ error: e });
+  }
 });
 
 app.listen(port, async (req, res) => {
