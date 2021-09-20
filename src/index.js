@@ -5,6 +5,7 @@ const { getLastRedirectUrl } = require("./util/getLastRedirectUrl");
 const { getHostName } = require("./util/getHostName");
 const { removeTracker } = require("./util/removeTracker");
 
+const port = process.env.PORT || 5000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -23,8 +24,6 @@ app.get("/", async (req, res) => {
   // }
   res.send("hello world");
 });
-
-const port = 5000;
 
 app.listen(port, async (req, res) => {
   console.log("server started at", port);
