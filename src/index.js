@@ -11,14 +11,17 @@ app.use(express.json());
 
 app.post("/", async (req, res) => {
   const initialUrl = req.body.url;
+  console.log(req.body);
+  console.log(initialUrl);
   try {
-    const redirectUrl = await getLastRedirectUrl(url);
+    const redirectUrl = await getLastRedirectUrl(initialUrl);
     const hostname = getHostName(redirectUrl);
     const finialUrl = removeTracker(hostname, redirectUrl);
 
     res.send(JSON.stringify({ initialUrl, finialUrl, hostname }));
   } catch (e) {
-    res.send({ error: e });
+    console.log("error", e);
+    res.send({ error: true, msg: "Some Thing went worng" });
   }
 });
 
