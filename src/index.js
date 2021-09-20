@@ -9,12 +9,10 @@ const port = process.env.PORT || 5000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", async (req, res) => {
-  const initialUrl = req.query.url;
+app.post("/", async (req, res) => {
+  const initialUrl = req.body.url;
   try {
-    const redirectUrl = await getLastRedirectUrl(
-      "https://youtu.be/M3mJkSqZbX4"
-    );
+    const redirectUrl = await getLastRedirectUrl(url);
     const hostname = getHostName(redirectUrl);
     const finialUrl = removeTracker(hostname, redirectUrl);
 
