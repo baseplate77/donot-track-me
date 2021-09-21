@@ -7,7 +7,7 @@ module.exports.getLastRedirectUrl = async (url) => {
       url
       //   "https://www.instagram.com/reel/CS9FBPVjl8z/?utm_source=ig_web_button_share_sheet"
     );
-
+    console.log("urls", urls);
     return urls[urls.length - 1]["url"];
   } catch (e) {
     console.log(e);
