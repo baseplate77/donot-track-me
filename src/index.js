@@ -18,10 +18,10 @@ app.post("/", async (req, res) => {
     const hostname = getHostName(redirectUrl);
     const finalUrl = removeTracker(hostname, redirectUrl);
 
-    res.send(JSON.stringify({ initialUrl, finalUrl: finalUrl, hostname }));
+    res.json({ initialUrl, finalUrl: finalUrl, hostname });
   } catch (e) {
     console.log("error", e);
-    res.status(400).send({ error: true, msg: "Some Thing went worng" });
+    res.status(400).json({ error: true, msg: "Some Thing went worng" });
   }
 });
 
