@@ -13,6 +13,7 @@ module.exports.getLastRedirectUrl = async (url) => {
     while (isRestricUrls(redirectUrl) && redirectUrlIndex != 0) {
       redirectUrlIndex--;
     }
+    console.log("redirect index", redirectUrlIndex);
     return urls[redirectUrlIndex]["url"];
   } catch (e) {
     console.log(e);
